@@ -1,5 +1,8 @@
 package com.thoughtworks.capability.gtb;
 
+import javafx.util.converter.LocalDateStringConverter;
+
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 /**
@@ -11,6 +14,14 @@ import java.time.LocalDate;
 public class Practice2 {
 
   public static LocalDate getNextWorkDate(LocalDate date) {
-    return null;
+    LocalDate localDate = date.plusDays(1);
+    DayOfWeek dayOfWeek = localDate.getDayOfWeek();
+    if (dayOfWeek==DayOfWeek.SATURDAY){
+      return localDate.plusDays(2);
+    }else if (dayOfWeek==DayOfWeek.SUNDAY){
+      return localDate.plusDays(1);
+    }else {
+      return localDate;
+    }
   }
 }
